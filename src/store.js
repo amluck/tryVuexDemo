@@ -19,7 +19,15 @@ const mutations = {
 }
 const actions = {
     increment: ({commit}) => commit('increment'),
-    decrement: ({commit}) => commit('decrement') 
+    decrement: ({commit}) => commit('decrement'),
+    incIfOdd : ({commit,state}) =>{
+        if((state.count+1)%2===0) commit('increment')
+    },
+    incrAsync:({commit})=>{
+        setTimeout(()=>{
+            commit('increment')
+        }, 1000);
+    } 
 }
 
 export default new Vuex.Store({
